@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class TiketVisit {
+public class TicketVisit {
 
     @Id
     @Column

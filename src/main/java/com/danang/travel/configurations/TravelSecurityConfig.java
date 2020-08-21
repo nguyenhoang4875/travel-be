@@ -69,10 +69,7 @@ public class TravelSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/confirm-account").permitAll()
                 .antMatchers("/api/reset-password").permitAll()
                 .antMatchers("/api/save-password").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/films/*").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/comments/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/images/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/showtimefilms/**").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").fullyAuthenticated()
                 .anyRequest().fullyAuthenticated();
         http
