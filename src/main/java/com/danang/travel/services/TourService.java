@@ -1,5 +1,6 @@
 package com.danang.travel.services;
 
+import com.danang.travel.models.dao.Image;
 import com.danang.travel.models.dto.TourDto;
 
 import java.util.List;
@@ -10,10 +11,14 @@ public interface TourService {
 
     TourDto getTourById(Integer tourId);
 
+    void addImageByTourId(Integer tourId, String url);
+
     TourDto addTour(TourDto tourDto);
 
     TourDto updateTour(TourDto tourDto);
 
     void deleteTour(Integer tourId);
+
+    List<Image> getImagesByTourId(Integer tourId);
 
 }

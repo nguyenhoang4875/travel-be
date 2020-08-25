@@ -1,8 +1,10 @@
 package com.danang.travel.services.servicesIplm;
 
 import com.danang.travel.converter.bases.Converter;
+import com.danang.travel.models.dao.Image;
 import com.danang.travel.models.dao.Tour;
 import com.danang.travel.models.dto.TourDto;
+import com.danang.travel.repositories.ImageRepository;
 import com.danang.travel.repositories.TourRepository;
 import com.danang.travel.services.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,11 @@ public class TourServiceImpl implements TourService {
     private TourRepository tourRepository;
 
     @Autowired
+    private ImageRepository imageRepository;
+
+    @Autowired
     private Converter<Tour, TourDto> tourToTourDaoConverter;
+
 
     @Autowired
     private Converter<TourDto, Tour> tourDtoToTourConverter;
@@ -30,6 +36,14 @@ public class TourServiceImpl implements TourService {
     @Override
     public TourDto getTourById(Integer tourId) {
         return tourToTourDaoConverter.convert(tourRepository.findById(tourId).get());
+    }
+
+    @Override
+    public void addImageByTourId(Integer tourId, String url) {
+        Tour tour = tourRepository.findById(tourId).get();
+        Image image = imageRepository.save(new Image(0,url));
+        tour.getImages().add(image);
+        tourRepository.save(tour);
     }
 
     @Override
@@ -49,6 +63,10 @@ public class TourServiceImpl implements TourService {
     @Override
     public void deleteTour(Integer tourId) {
         tourRepository.deleteById(tourId);
+    }
 
+    @Override
+    public List<Image> getImagesByTourId(Integer tourId) {
+        return tourRepository.findById(tourId).get().getImages();
     }
 }
