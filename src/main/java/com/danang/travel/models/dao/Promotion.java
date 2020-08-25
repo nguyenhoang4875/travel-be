@@ -1,8 +1,10 @@
 package com.danang.travel.models.dao;
 
 import lombok.Data;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -19,4 +21,7 @@ public class Promotion {
     @Column
     private String description;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "promotion_id")
+    private List<Image> images;
 }

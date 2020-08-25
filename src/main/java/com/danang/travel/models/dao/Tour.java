@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -45,8 +45,8 @@ public class Tour {
     @JoinColumn(name = "tour_schedule_id")
     private TourSchedule tourSchedule;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tour")
-    @JsonIgnore
-    private List<Image> images;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tour_id")
+    private List<Image> images = new ArrayList<>();
 
 }

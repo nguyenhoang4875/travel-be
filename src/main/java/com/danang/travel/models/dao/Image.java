@@ -1,12 +1,15 @@
 package com.danang.travel.models.dao;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Image {
 
     @Id
@@ -16,10 +19,5 @@ public class Image {
 
     @Column
     private String url;
-
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "film_id")
-    @JsonIgnore
-    private Tour tour;
 
 }
