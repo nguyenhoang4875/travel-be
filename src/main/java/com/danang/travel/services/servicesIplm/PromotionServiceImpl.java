@@ -1,6 +1,8 @@
 package com.danang.travel.services.servicesIplm;
 
+import com.danang.travel.models.dao.Image;
 import com.danang.travel.models.dao.Promotion;
+import com.danang.travel.repositories.ImageRepository;
 import com.danang.travel.repositories.PromotionRepository;
 import com.danang.travel.services.PromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ public class PromotionServiceImpl implements PromotionService {
 
     @Autowired
     private PromotionRepository promotionRepository;
+
+    @Autowired
+    private ImageRepository imageRepository;
 
     @Override
     public List<Promotion> getAllPromotions() {
@@ -37,5 +42,18 @@ public class PromotionServiceImpl implements PromotionService {
     @Override
     public void deletePromotion(Integer promotionId) {
         promotionRepository.deleteById(promotionId);
+    }
+
+    @Override
+    public void addImageByPromotionId(Integer promotionId, String url) {
+        Promotion promotion = promotionRepository.findById(promotionId).get();
+        Image image = imageRepository.save(new Image(0,url));
+        promotion.getImages().add(image);
+        promotionRepository.save(promotion);
+    }
+
+    @Override
+    public List<Image> getImagesByPromotionId(Integer promotionId) {
+        return promotionRepository.findById(promotionId).get().getImages();
     }
 }

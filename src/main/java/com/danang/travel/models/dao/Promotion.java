@@ -4,6 +4,7 @@ import lombok.Data;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -23,5 +24,5 @@ public class Promotion {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "promotion_id")
-    private List<Image> images;
+    private List<Image> images= new ArrayList<>();
 }

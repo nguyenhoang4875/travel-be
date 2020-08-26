@@ -3,6 +3,7 @@ package com.danang.travel.models.dao;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -22,6 +23,6 @@ public class TicketVisit {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "ticket_visit_id")
-    private List<Image> images;
+    private List<Image> images = new ArrayList<>();
 
 }
