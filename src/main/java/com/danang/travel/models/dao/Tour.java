@@ -37,6 +37,8 @@ public class Tour {
     @Column
     private String address;
 
+    @Column String poster;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tour_ticket_id")
     private TourTicket tourTicket;

@@ -24,6 +24,8 @@ public class TourDto {
 
     private String price;
 
+    private String poster;
+
     private String address;
 
 }
