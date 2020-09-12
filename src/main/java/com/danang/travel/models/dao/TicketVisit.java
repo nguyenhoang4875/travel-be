@@ -18,6 +18,8 @@ public class TicketVisit {
     @Column
     private String name;
 
+    @Column String price;
+
     @Column
     private String description;
 
