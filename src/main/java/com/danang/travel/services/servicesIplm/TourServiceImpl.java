@@ -1,5 +1,6 @@
 package com.danang.travel.services.servicesIplm;
 
+import com.danang.travel.converter.TourDtoToTourDaoConverter;
 import com.danang.travel.converter.bases.Converter;
 import com.danang.travel.models.dao.Image;
 import com.danang.travel.models.dao.Tour;
@@ -22,26 +23,26 @@ public class TourServiceImpl implements TourService {
     private ImageRepository imageRepository;
 
     @Autowired
-    private Converter<Tour, TourDto> tourToTourDaoConverter;
+    private Converter<Tour, TourDto> tourDaoToTourDtoConverter;
 
 
     @Autowired
-    private Converter<TourDto, Tour> tourDtoToTourConverter;
+    private TourDtoToTourDaoConverter tourDtoToTourConverter;
 
     @Override
     public List<TourDto> getAllTours() {
-        return tourToTourDaoConverter.convert(tourRepository.findAll());
+        return tourDaoToTourDtoConverter.convert(tourRepository.findAll());
     }
 
     @Override
     public TourDto getTourById(Integer tourId) {
-        return tourToTourDaoConverter.convert(tourRepository.findById(tourId).get());
+        return tourDaoToTourDtoConverter.convert(tourRepository.findById(tourId).get());
     }
 
     @Override
     public void addImageByTourId(Integer tourId, String url) {
         Tour tour = tourRepository.findById(tourId).get();
-        Image image = imageRepository.save(new Image(0,url));
+        Image image = imageRepository.save(new Image(0, url));
         tour.getImages().add(image);
         tourRepository.save(tour);
     }
@@ -54,7 +55,7 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public void addPosterByTourId(Integer tourId,String posterUrl) {
+    public void addPosterByTourId(Integer tourId, String posterUrl) {
         Tour tour = tourRepository.findById(tourId).get();
         tour.setPoster(posterUrl);
         tourRepository.save(tour);
@@ -62,9 +63,9 @@ public class TourServiceImpl implements TourService {
 
     @Override
     public TourDto updateTour(TourDto tourDto) {
-        Tour tour = tourDtoToTourConverter.convert(tourDto);
-        tourDto.setId(tourRepository.save(tour).getId());
-        return tourDto;
+        Tour tour = tourDtoToTourConverter.convertForEdit(tourDto);
+        tourRepository.save(tour);
+        return tourDaoToTourDtoConverter.convert(tour);
     }
 
     @Override

@@ -1,5 +1,6 @@
-package com.danang.travel.converter.bases;
+package com.danang.travel.converter;
 
+import com.danang.travel.converter.bases.Converter;
 import com.danang.travel.models.dao.Tour;
 import com.danang.travel.models.dto.TourDto;
 import org.springframework.stereotype.Component;

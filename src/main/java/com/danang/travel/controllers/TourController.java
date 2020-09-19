@@ -4,6 +4,7 @@ import com.danang.travel.models.dao.Image;
 import com.danang.travel.models.dto.TourDto;
 import com.danang.travel.services.TourService;
 import com.danang.travel.services.servicesIplm.CloudinaryService;
+import org.cloudinary.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,14 +39,14 @@ public class TourController {
     }
 
     @PostMapping("/{tourId}/images")
-    public String  addImageByTourId(@PathVariable Integer tourId, @RequestParam("file") MultipartFile file) {
+    public String addImageByTourId(@PathVariable Integer tourId, @RequestParam("file") MultipartFile file) {
         String url = cloudinaryService.uploadFile(file);
-        tourService.addImageByTourId(tourId,url);
-        return url;
+        tourService.addImageByTourId(tourId, url);
+        return JSONObject.quote(url);
     }
 
     @GetMapping("/{tourId}/images")
-    public List<Image> getImagesByTourId(@PathVariable Integer tourId){
+    public List<Image> getImagesByTourId(@PathVariable Integer tourId) {
         return tourService.getImagesByTourId(tourId);
     }
 
@@ -60,14 +61,14 @@ public class TourController {
     }
 
     @PostMapping("/{tourId}/poster")
-    public String  addPosterByTourId(@PathVariable Integer tourId, @RequestParam("file") MultipartFile file) {
+    public String addPosterByTourId(@PathVariable Integer tourId, @RequestParam("file") MultipartFile file) {
         String url = cloudinaryService.uploadFile(file);
-        tourService.addPosterByTourId(tourId,url);
-        return url;
+        tourService.addPosterByTourId(tourId, url);
+        return JSONObject.quote(url);
     }
 
     @DeleteMapping("/{tourId}/images/{id}")
-    public void deleteImage(@PathVariable Integer tourId, @PathVariable Integer id){
+    public void deleteImage(@PathVariable Integer tourId, @PathVariable Integer id) {
         tourService.deleteImage(tourId, id);
     }
 
