@@ -15,6 +15,8 @@ public interface TourService {
 
     TourDto addTour(TourDto tourDto);
 
+    void addPosterByTourId(Integer tourId,String  posterUrl);
+
     TourDto updateTour(TourDto tourDto);
 
     void deleteTour(Integer tourId);

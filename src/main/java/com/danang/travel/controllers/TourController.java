@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("api/tours")
 public class TourController {
 
@@ -58,4 +59,10 @@ public class TourController {
         tourService.deleteTour(tourId);
     }
 
+    @PostMapping("/{tourId}/poster")
+    public String  addPosterByTourId(@PathVariable Integer tourId, @RequestParam("file") MultipartFile file) {
+        String url = cloudinaryService.uploadFile(file);
+        tourService.addPosterByTourId(tourId,url);
+        return url;
+    }
 }

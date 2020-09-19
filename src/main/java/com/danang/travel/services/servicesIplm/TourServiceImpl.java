@@ -54,6 +54,13 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
+    public void addPosterByTourId(Integer tourId,String posterUrl) {
+        Tour tour = tourRepository.findById(tourId).get();
+        tour.setPoster(posterUrl);
+        tourRepository.save(tour);
+    }
+
+    @Override
     public TourDto updateTour(TourDto tourDto) {
         Tour tour = tourDtoToTourConverter.convert(tourDto);
         tourDto.setId(tourRepository.save(tour).getId());
