@@ -20,4 +20,6 @@ public interface GuideService {
     void addImageByGuideId(Integer tourId, String url);
 
     List<Image> getImagesByGuideId(Integer tourId);
+
+    void deleteImage(Integer guideId, Integer id);
 }

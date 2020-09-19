@@ -20,4 +20,6 @@ public interface PromotionService {
     void addImageByPromotionId(Integer promotionId, String url);
 
     List<Image> getImagesByPromotionId(Integer promotionId);
+
+    void deleteImage(Integer promotionId, Integer id);
 }

@@ -2,6 +2,7 @@ package com.danang.travel.services.servicesIplm;
 
 import com.danang.travel.models.dao.Image;
 import com.danang.travel.models.dao.Promotion;
+import com.danang.travel.models.dao.Tour;
 import com.danang.travel.repositories.ImageRepository;
 import com.danang.travel.repositories.PromotionRepository;
 import com.danang.travel.services.PromotionService;
@@ -55,5 +56,12 @@ public class PromotionServiceImpl implements PromotionService {
     @Override
     public List<Image> getImagesByPromotionId(Integer promotionId) {
         return promotionRepository.findById(promotionId).get().getImages();
+    }
+
+    @Override
+    public void deleteImage(Integer promotionId, Integer id) {
+        Promotion promotion= promotionRepository.findById(promotionId).get();
+        promotion.getImages().remove(imageRepository.findById(id).get());
+        promotionRepository.save(promotion);
     }
 }

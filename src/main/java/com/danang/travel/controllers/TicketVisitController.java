@@ -59,4 +59,9 @@ public class TicketVisitController {
         return ticketVisitService.getImagesByTicketVisitId(visitTicketId);
     }
 
+    @DeleteMapping("/{visitTicketId}/images/{id}")
+    public void deleteImage(@PathVariable Integer visitTicketId, @PathVariable Integer id){
+        ticketVisitService.deleteImage(visitTicketId, id);
+    }
+
 }

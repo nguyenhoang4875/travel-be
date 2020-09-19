@@ -20,4 +20,6 @@ public interface TicketVisitService {
     void addImageByTicketVisitId(Integer ticketVisitId, String url);
 
     List<Image> getImagesByTicketVisitId(Integer ticketVisitId);
+
+    void deleteImage(Integer visitTicketId, Integer id);
 }

@@ -59,5 +59,10 @@ public class PromotionController {
         return promotionService.getImagesByPromotionId(promotionId);
     }
 
+    @DeleteMapping("/{promotionId}/images/{id}")
+    public void deleteImage(@PathVariable Integer promotionId, @PathVariable Integer id){
+        promotionService.deleteImage(promotionId, id);
+    }
+
 
 }

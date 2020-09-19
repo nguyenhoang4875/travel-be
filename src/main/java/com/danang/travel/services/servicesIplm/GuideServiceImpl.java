@@ -2,6 +2,7 @@ package com.danang.travel.services.servicesIplm;
 
 import com.danang.travel.models.dao.Guide;
 import com.danang.travel.models.dao.Image;
+import com.danang.travel.models.dao.Tour;
 import com.danang.travel.repositories.GuideRepository;
 import com.danang.travel.repositories.ImageRepository;
 import com.danang.travel.services.GuideService;
@@ -55,5 +56,13 @@ public class GuideServiceImpl implements GuideService {
     @Override
     public List<Image> getImagesByGuideId(Integer guideId) {
         return guideRepository.findById(guideId).get().getImages();
+    }
+
+    @Override
+    public void deleteImage(Integer guideId, Integer id) {
+        Guide guide = guideRepository.findById(guideId).get();
+        guide.getImages().remove(imageRepository.findById(id).get());
+        guideRepository.save(guide);
+
     }
 }

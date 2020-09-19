@@ -60,4 +60,8 @@ public class GuideController {
     }
 
 
+    @DeleteMapping("/{guideId}/images/{id}")
+    public void deleteImage(@PathVariable Integer guideId, @PathVariable Integer id){
+        guideService.deleteImage(guideId, id);
+    }
 }
