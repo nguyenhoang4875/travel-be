@@ -65,4 +65,10 @@ public class TourController {
         tourService.addPosterByTourId(tourId,url);
         return url;
     }
+
+    @DeleteMapping("/{tourId}/images/{id}")
+    public void deleteImage(@PathVariable Integer tourId, @PathVariable Integer id){
+        tourService.deleteImage(tourId, id);
+    }
+
 }

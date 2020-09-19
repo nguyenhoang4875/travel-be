@@ -76,4 +76,11 @@ public class TourServiceImpl implements TourService {
     public List<Image> getImagesByTourId(Integer tourId) {
         return tourRepository.findById(tourId).get().getImages();
     }
+
+    @Override
+    public void deleteImage(Integer tourId, Integer id) {
+        Tour tour = tourRepository.findById(tourId).get();
+        tour.getImages().remove(imageRepository.findById(id).get());
+        tourRepository.save(tour);
+    }
 }

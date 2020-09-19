@@ -23,4 +23,5 @@ public interface TourService {
 
     List<Image> getImagesByTourId(Integer tourId);
 
+    void deleteImage(Integer tourId, Integer id);
 }
