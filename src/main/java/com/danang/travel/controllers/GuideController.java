@@ -48,10 +48,9 @@ public class GuideController {
     }
 
     @PostMapping("/{guideId}/images")
-    public String  addImageByGuideId(@PathVariable Integer guideId, @RequestParam("file") MultipartFile file) {
+    public Image addImageByGuideId(@PathVariable Integer guideId, @RequestParam("file") MultipartFile file) {
         String url = cloudinaryService.uploadFile(file);
-        guideService.addImageByGuideId(guideId,url);
-        return url;
+        return guideService.addImageByGuideId(guideId,url);
     }
 
     @GetMapping("/{guideId}/images")

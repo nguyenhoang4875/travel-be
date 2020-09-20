@@ -39,10 +39,9 @@ public class TourController {
     }
 
     @PostMapping("/{tourId}/images")
-    public String addImageByTourId(@PathVariable Integer tourId, @RequestParam("file") MultipartFile file) {
+    public Image addImageByTourId(@PathVariable Integer tourId, @RequestParam("file") MultipartFile file) {
         String url = cloudinaryService.uploadFile(file);
-        tourService.addImageByTourId(tourId, url);
-        return JSONObject.quote(url);
+        return tourService.addImageByTourId(tourId, url);
     }
 
     @GetMapping("/{tourId}/images")

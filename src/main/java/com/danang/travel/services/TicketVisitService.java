@@ -17,7 +17,7 @@ public interface TicketVisitService {
 
     void deleteTicketVisit(Integer ticketVisitId);
 
-    void addImageByTicketVisitId(Integer ticketVisitId, String url);
+    Image addImageByTicketVisitId(Integer ticketVisitId, String url);
 
     List<Image> getImagesByTicketVisitId(Integer ticketVisitId);
 

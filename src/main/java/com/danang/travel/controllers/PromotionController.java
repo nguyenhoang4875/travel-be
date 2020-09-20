@@ -48,10 +48,9 @@ public class PromotionController {
     }
 
     @PostMapping("/{promotionId}/images")
-    public String  addImageByPromotionId(@PathVariable Integer promotionId, @RequestParam("file") MultipartFile file) {
+    public Image  addImageByPromotionId(@PathVariable Integer promotionId, @RequestParam("file") MultipartFile file) {
         String url = cloudinaryService.uploadFile(file);
-        promotionService.addImageByPromotionId(promotionId,url);
-        return url;
+        return promotionService.addImageByPromotionId(promotionId,url);
     }
 
     @GetMapping("/{promotionId}/images")

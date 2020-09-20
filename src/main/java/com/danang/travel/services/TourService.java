@@ -11,7 +11,7 @@ public interface TourService {
 
     TourDto getTourById(Integer tourId);
 
-    void addImageByTourId(Integer tourId, String url);
+    Image addImageByTourId(Integer tourId, String url);
 
     TourDto addTour(TourDto tourDto);
 

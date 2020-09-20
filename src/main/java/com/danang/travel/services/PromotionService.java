@@ -17,7 +17,7 @@ public interface PromotionService {
 
     void deletePromotion(Integer promotionId);
 
-    void addImageByPromotionId(Integer promotionId, String url);
+    Image addImageByPromotionId(Integer promotionId, String url);
 
     List<Image> getImagesByPromotionId(Integer promotionId);
 

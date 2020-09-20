@@ -46,11 +46,12 @@ public class GuideServiceImpl implements GuideService {
     }
 
     @Override
-    public void addImageByGuideId(Integer guideId, String url) {
+    public Image addImageByGuideId(Integer guideId, String url) {
         Guide guide = guideRepository.findById(guideId).get();
         Image image = imageRepository.save(new Image(0, url));
         guide.getImages().add(image);
         guideRepository.save(guide);
+        return  image;
     }
 
     @Override

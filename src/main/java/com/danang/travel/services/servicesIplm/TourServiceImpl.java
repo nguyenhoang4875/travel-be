@@ -40,11 +40,12 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public void addImageByTourId(Integer tourId, String url) {
+    public Image addImageByTourId(Integer tourId, String url) {
         Tour tour = tourRepository.findById(tourId).get();
         Image image = imageRepository.save(new Image(0, url));
         tour.getImages().add(image);
         tourRepository.save(tour);
+        return image;
     }
 
     @Override

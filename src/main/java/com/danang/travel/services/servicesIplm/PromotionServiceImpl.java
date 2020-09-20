@@ -46,11 +46,12 @@ public class PromotionServiceImpl implements PromotionService {
     }
 
     @Override
-    public void addImageByPromotionId(Integer promotionId, String url) {
+    public Image addImageByPromotionId(Integer promotionId, String url) {
         Promotion promotion = promotionRepository.findById(promotionId).get();
         Image image = imageRepository.save(new Image(0,url));
         promotion.getImages().add(image);
         promotionRepository.save(promotion);
+        return image;
     }
 
     @Override

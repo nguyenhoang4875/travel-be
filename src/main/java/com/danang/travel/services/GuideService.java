@@ -17,7 +17,7 @@ public interface GuideService {
 
     void deleteGuide(Integer guideId);
 
-    void addImageByGuideId(Integer tourId, String url);
+    Image addImageByGuideId(Integer tourId, String url);
 
     List<Image> getImagesByGuideId(Integer tourId);
 

@@ -2,7 +2,6 @@ package com.danang.travel.services.servicesIplm;
 
 import com.danang.travel.models.dao.Image;
 import com.danang.travel.models.dao.TicketVisit;
-import com.danang.travel.models.dao.Tour;
 import com.danang.travel.repositories.ImageRepository;
 import com.danang.travel.repositories.TicketVisitRepository;
 import com.danang.travel.services.TicketVisitService;
@@ -46,11 +45,12 @@ public class TicketVisitServiceImpl implements TicketVisitService {
     }
 
     @Override
-    public void addImageByTicketVisitId(Integer ticketVisitId, String url) {
+    public Image addImageByTicketVisitId(Integer ticketVisitId, String url) {
         TicketVisit ticketVisit = ticketVisitRepository.findById(ticketVisitId).get();
         Image image = imageRepository.save(new Image(0, url));
         ticketVisit.getImages().add(image);
         ticketVisitRepository.save(ticketVisit);
+        return image;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class TicketVisitServiceImpl implements TicketVisitService {
 
     @Override
     public void deleteImage(Integer visitTicketId, Integer id) {
-        TicketVisit ticketVisit= ticketVisitRepository.findById(visitTicketId).get();
+        TicketVisit ticketVisit = ticketVisitRepository.findById(visitTicketId).get();
         ticketVisit.getImages().remove(imageRepository.findById(id).get());
         ticketVisitRepository.save(ticketVisit);
 

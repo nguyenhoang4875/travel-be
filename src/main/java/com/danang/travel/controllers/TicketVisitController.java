@@ -48,19 +48,18 @@ public class TicketVisitController {
     }
 
     @PostMapping("/{visitTicketId}/images")
-    public String  addImageByTicketVisitId(@PathVariable Integer visitTicketId, @RequestParam("file") MultipartFile file) {
+    public Image addImageByTicketVisitId(@PathVariable Integer visitTicketId, @RequestParam("file") MultipartFile file) {
         String url = cloudinaryService.uploadFile(file);
-        ticketVisitService.addImageByTicketVisitId(visitTicketId,url);
-        return url;
+        return ticketVisitService.addImageByTicketVisitId(visitTicketId, url);
     }
 
     @GetMapping("/{visitTicketId}/images")
-    public List<Image> getImagesByTicketVisitId(@PathVariable Integer visitTicketId){
+    public List<Image> getImagesByTicketVisitId(@PathVariable Integer visitTicketId) {
         return ticketVisitService.getImagesByTicketVisitId(visitTicketId);
     }
 
     @DeleteMapping("/{visitTicketId}/images/{id}")
-    public void deleteImage(@PathVariable Integer visitTicketId, @PathVariable Integer id){
+    public void deleteImage(@PathVariable Integer visitTicketId, @PathVariable Integer id) {
         ticketVisitService.deleteImage(visitTicketId, id);
     }
 
