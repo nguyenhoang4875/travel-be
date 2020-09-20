@@ -36,7 +36,11 @@ public class TicketVisitServiceImpl implements TicketVisitService {
 
     @Override
     public TicketVisit updateTicketVisit(TicketVisit ticketVisit) {
-        return ticketVisitRepository.save(ticketVisit);
+        TicketVisit ticketVisitUpdate = ticketVisitRepository.findById(ticketVisit.getId()).get();
+        ticketVisitUpdate.setName(ticketVisit.getName());
+        ticketVisitUpdate.setDescription(ticketVisit.getDescription());
+        ticketVisitUpdate.setPrice(ticketVisit.getPrice());
+        return ticketVisitRepository.save(ticketVisitUpdate);
     }
 
     @Override

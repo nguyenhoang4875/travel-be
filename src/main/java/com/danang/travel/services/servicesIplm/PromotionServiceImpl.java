@@ -37,7 +37,10 @@ public class PromotionServiceImpl implements PromotionService {
 
     @Override
     public Promotion updatePromotion(Promotion promotion) {
-        return promotionRepository.save(promotion);
+        Promotion promotionUpdate = promotionRepository.findById(promotion.getId()).get();
+        promotionUpdate.setName(promotion.getName());
+        promotionUpdate.setDescription(promotion.getDescription());
+        return promotionRepository.save(promotionUpdate);
     }
 
     @Override

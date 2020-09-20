@@ -37,7 +37,10 @@ public class GuideServiceImpl implements GuideService {
 
     @Override
     public Guide updateGuide(Guide guide) {
-        return guideRepository.save(guide);
+        Guide guideUpdate = guideRepository.findById(guide.getId()).get();
+        guideUpdate.setName(guide.getName());
+        guideUpdate.setDescription(guide.getDescription());
+        return guideRepository.save(guideUpdate);
     }
 
     @Override
