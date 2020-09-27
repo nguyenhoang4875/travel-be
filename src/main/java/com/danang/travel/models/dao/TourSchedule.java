@@ -19,7 +19,7 @@ public class TourSchedule {
     @Column
     private String imageUrl;
 
-    @Column
+    @Column(length = 5000)
     private String description;
 
 }

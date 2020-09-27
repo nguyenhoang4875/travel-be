@@ -20,7 +20,7 @@ public class TicketVisit {
 
     @Column String price;
 
-    @Column
+    @Column(length = 50000)
     private String description;
 
     @OneToMany(cascade = CascadeType.ALL)

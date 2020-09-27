@@ -19,7 +19,7 @@ public class Promotion {
     @Column
     private String name;
 
-    @Column
+    @Column(length = 5000)
     private String description;
 
     @OneToMany(cascade = CascadeType.ALL)

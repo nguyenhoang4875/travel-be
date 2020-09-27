@@ -19,7 +19,7 @@ public class Guide {
     @Column
     private String name;
 
-    @Column
+    @Column(length = 50000)
     private String description;
 
     @OneToMany(cascade = CascadeType.ALL)

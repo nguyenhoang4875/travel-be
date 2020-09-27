@@ -34,7 +34,7 @@ public class Tour {
     @Column
     private String price;
 
-    @Column
+    @Column (length = 1000)
     private String address;
 
     @Column String poster;
