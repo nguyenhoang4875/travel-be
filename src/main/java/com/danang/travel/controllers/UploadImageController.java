@@ -1,5 +1,6 @@
 package com.danang.travel.controllers;
 
+import com.danang.travel.models.dto.ImgRes;
 import com.danang.travel.services.servicesIplm.CloudinaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +15,9 @@ public class UploadImageController {
     private CloudinaryService cloudinaryService;
 
     @PostMapping
-    public String uploadFile(@RequestParam("file") MultipartFile file) {
+    public ImgRes uploadFile(@RequestParam("file") MultipartFile file) {
         String url = cloudinaryService.uploadFile(file);
-        return url;
+        return new ImgRes(url);
     }
+
 }
