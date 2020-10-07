@@ -47,8 +47,9 @@ public class TourPolicyServiceImpl implements TourPolicyService {
 
     @Override
     public TourPolicy updateTourPolicy(Integer tourId, TourPolicy tourPolicy) {
-        TourPolicy tourPolicyUpdate = tourPolicyRepository.save(tourPolicy);
         Tour tour = tourRepository.findById(tourId).get();
+        TourPolicy tourPolicyUpdate = tour.getTourPolicy();
+        tourPolicyUpdate.setDescription(tourPolicy.getDescription());
         tour.setTourPolicy(tourPolicyUpdate);
         tourRepository.save(tour);
         return tourPolicyUpdate;

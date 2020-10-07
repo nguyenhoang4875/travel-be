@@ -45,8 +45,9 @@ public class TourScheduleServiceImpl implements TourScheduleService {
 
     @Override
     public TourSchedule updateTourSchedule(Integer tourId, TourSchedule tourSchedule) {
-        TourSchedule tourScheduleUpdate = tourScheduleRepository.save(tourSchedule);
         Tour tour = tourRepository.findById(tourId).get();
+        TourSchedule tourScheduleUpdate = tour.getTourSchedule();
+        tourScheduleUpdate.setDescription(tourSchedule.getDescription());
         tour.setTourSchedule(tourScheduleUpdate);
         tourRepository.save(tour);
         return tourScheduleUpdate;
