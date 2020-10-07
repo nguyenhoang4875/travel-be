@@ -21,6 +21,7 @@ public class TourDtoToTourDaoConverter extends Converter<TourDto, Tour> {
         tour.setAddress(source.getAddress());
         tour.setDuration(source.getDuration());
         tour.setPrice(source.getPrice());
+        tour.setDescription(source.getDescription());
         return tour;
     }
 
@@ -30,6 +31,7 @@ public class TourDtoToTourDaoConverter extends Converter<TourDto, Tour> {
         tour.setAddress(source.getAddress());
         tour.setDuration(source.getDuration());
         tour.setPrice(source.getPrice());
+        tour.setDescription(source.getDescription());
         return  tour;
     }
 }

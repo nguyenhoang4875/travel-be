@@ -37,7 +37,11 @@ public class Tour {
     @Column (length = 1000)
     private String address;
 
-    @Column String poster;
+    @Column
+    private String poster;
+
+    @Column (length = 5000)
+    private String description;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tour_ticket_id")
@@ -46,6 +50,10 @@ public class Tour {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tour_schedule_id")
     private TourSchedule tourSchedule;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tour_policy_id")
+    private TourPolicy tourPolicy;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "tour_id")

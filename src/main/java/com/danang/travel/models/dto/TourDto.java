@@ -28,4 +28,6 @@ public class TourDto {
 
     private String address;
 
+    private String description;
+
 }
