@@ -17,6 +17,7 @@ public class TourDaoToTourDtoConverter extends Converter<Tour, TourDto> {
         tourDto.setPrice(source.getPrice());
         tourDto.setPoster(source.getPoster());
         tourDto.setDescription(source.getDescription());
+        tourDto.setType(source.getType());
         return tourDto;
     }
 }

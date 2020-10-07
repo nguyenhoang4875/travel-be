@@ -43,6 +43,9 @@ public class Tour {
     @Column (length = 5000)
     private String description;
 
+    @Column
+    private Integer type;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tour_ticket_id")
     private TourTicket tourTicket;

@@ -22,6 +22,7 @@ public class TourDtoToTourDaoConverter extends Converter<TourDto, Tour> {
         tour.setDuration(source.getDuration());
         tour.setPrice(source.getPrice());
         tour.setDescription(source.getDescription());
+        tour.setType(source.getType());
         return tour;
     }
 
@@ -32,6 +33,9 @@ public class TourDtoToTourDaoConverter extends Converter<TourDto, Tour> {
         tour.setDuration(source.getDuration());
         tour.setPrice(source.getPrice());
         tour.setDescription(source.getDescription());
+        if (source.getType() != null){
+            tour.setType(source.getType());
+        }
         return  tour;
     }
 }

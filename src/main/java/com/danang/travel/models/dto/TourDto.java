@@ -30,4 +30,6 @@ public class TourDto {
 
     private String description;
 
+    private Integer type;
+
 }
