@@ -40,7 +40,7 @@ public class Tour {
     @Column
     private String poster;
 
-    @Column (length = 5000)
+    @Column (length = 50000)
     private String description;
 
     @Column

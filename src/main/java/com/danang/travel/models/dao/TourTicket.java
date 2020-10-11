@@ -16,6 +16,6 @@ public class TourTicket {
     @Column
     private String name;
 
-    @Column (length = 5000)
+    @Column (length = 50000)
     private String description;
 }

@@ -13,7 +13,7 @@ public class TourPolicy {
     @Column
     private Integer id;
 
-    @Column(length = 10000)
+    @Column(length = 50000)
     private String description;
 
 }
