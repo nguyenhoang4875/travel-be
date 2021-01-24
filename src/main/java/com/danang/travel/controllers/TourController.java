@@ -2,6 +2,7 @@ package com.danang.travel.controllers;
 
 import com.danang.travel.models.dao.Image;
 import com.danang.travel.models.dto.TourDto;
+import com.danang.travel.models.dto.TourHomeDto;
 import com.danang.travel.services.TourService;
 import com.danang.travel.services.servicesIplm.CloudinaryService;
 import org.cloudinary.json.JSONObject;
@@ -25,6 +26,11 @@ public class TourController {
     @GetMapping
     public List<TourDto> getAllTours() {
         return tourService.getAllTours();
+    }
+
+    @GetMapping("home")
+    public List<TourHomeDto> getAllHomeTours() {
+        return tourService.getAllHomeTours();
     }
 
     @GetMapping("/{tourId}")

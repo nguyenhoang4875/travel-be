@@ -5,6 +5,7 @@ import com.danang.travel.converter.bases.Converter;
 import com.danang.travel.models.dao.Image;
 import com.danang.travel.models.dao.Tour;
 import com.danang.travel.models.dto.TourDto;
+import com.danang.travel.models.dto.TourHomeDto;
 import com.danang.travel.repositories.ImageRepository;
 import com.danang.travel.repositories.TourRepository;
 import com.danang.travel.services.TourService;
@@ -25,6 +26,8 @@ public class TourServiceImpl implements TourService {
     @Autowired
     private Converter<Tour, TourDto> tourDaoToTourDtoConverter;
 
+    @Autowired
+    private Converter<Tour, TourHomeDto> tourDaoToTourHomeDtoConverter;
 
     @Autowired
     private TourDtoToTourDaoConverter tourDtoToTourConverter;
@@ -84,5 +87,10 @@ public class TourServiceImpl implements TourService {
         Tour tour = tourRepository.findById(tourId).get();
         tour.getImages().remove(imageRepository.findById(id).get());
         tourRepository.save(tour);
+    }
+
+    @Override
+    public List<TourHomeDto> getAllHomeTours() {
+        return tourDaoToTourHomeDtoConverter.convert(tourRepository.findAll());
     }
 }
